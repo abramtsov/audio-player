@@ -29,6 +29,12 @@
   },
   "dependencies": {
     "del-cli": "^5.0.0",
-    "gulp-cli": "^2.3.0"
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-remove-css-comments": "^1.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify": "^3.0.2"
   }
 }
