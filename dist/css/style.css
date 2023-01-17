@@ -22,7 +22,7 @@ html::after {
   font-size: 2rem;
 }
 
-@media (min-height: 900px) {
+@media (min-height: 200px) {
   html::after {
     content: "";
   }
@@ -32,7 +32,7 @@ html::after {
   }
   * {
     visibility: visible;
-    font-family: Metropolis, serif;
+    font-family: Metropolis, Arial, serif;
   }
   button {
     border: none;
@@ -55,7 +55,7 @@ html::after {
   }
   .player {
     box-sizing: border-box;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     border-radius: 40px;
     width: 331px;
     height: 716px;
@@ -63,11 +63,18 @@ html::after {
     z-index: -5;
     overflow-y: scroll;
   }
-  .users,
+  .player .discover:last-child {
+    margin-bottom: 50px;
+    padding: 50px;
+    background-color: #333;
+  }
+  .discover__listItem::-webkit-scrollbar,
+  .users::-webkit-scrollbar,
   .player::-webkit-scrollbar {
     display: none;
   }
   /* Hide scrollbar for IE, Edge and Firefox */
+  .discover__listItem,
   .users,
   .player {
     -ms-overflow-style: none;
@@ -126,6 +133,8 @@ html::after {
   .advertising {
     padding-top: 49px;
     display: flex;
+    width: 308px;
+    overflow-x: hidden;
     justify-content: space-between;
     margin: 24px 0;
   }
@@ -142,10 +151,9 @@ html::after {
     display: flex;
     margin: 24px 0;
     gap: 16px;
-    min-width: -moz-fit-content;
-    min-width: fit-content;
+    min-width: 300px;
+    z-index: 50;
     overflow-x: scroll;
-    overflow-y: hidden;
   }
   .users__profile {
     flex: 0 0 auto;
@@ -157,6 +165,9 @@ html::after {
     display: flex;
     justify-content: space-around;
     align-items: center;
+  }
+  .users__profile:last-child {
+    margin-right: 14px;
   }
   .users__profile:nth-child(2n) {
     background-color: rgba(111, 207, 151, 0.1);
@@ -193,11 +204,12 @@ html::after {
     position: absolute;
     bottom: 0;
     right: 0;
-    margin-bottom: -7px;
+    margin-bottom: -6px;
     margin-right: -12px;
   }
   .discover {
     margin-top: 16px;
+    width: 300px;
   }
   .discover h1 {
     font-weight: 800;
@@ -207,23 +219,26 @@ html::after {
   }
   .discover__listItem {
     display: flex;
+    overflow-x: scroll;
+    width: 331px;
     flex-direction: row;
     gap: 16px;
-    width: -moz-fit-content;
-    width: fit-content;
   }
   .discover__item {
     display: inline-flex;
-    width: 149px;
-    height: 145px;
+    height: 140px;
     overflow: hidden;
     border-radius: 30px;
     position: relative;
+    flex: 0 0 140px;
+  }
+  .discover__item:last-child {
+    margin-right: 36px;
   }
   .discover__item picture img {
     aspect-ratio: 1/1;
-    -o-object-fit: fill;
-       object-fit: fill;
+    -o-object-fit: cover;
+       object-fit: cover;
     width: 100%;
     height: 100%;
   }
@@ -252,12 +267,16 @@ html::after {
     line-height: 133%;
   }
   .audio {
-    position: fixed;
-    overflow: hidden;
-    bottom: 101px;
+    position: absolute;
+    bottom: 0;
     max-width: 331px;
-    margin-left: -20px;
     border-radius: 0 0 40px 40px;
+    display: none;
+  }
+  .audio__child {
+    position: fixed;
+    bottom: 78px;
+    border-radius: 0px 0px 26px 26px;
   }
   .audio__description {
     -webkit-backdrop-filter: blur(25px);
@@ -265,7 +284,9 @@ html::after {
     border-radius: 26px 26px 0px 0px;
     padding: 20px 20px 40px 20px;
     margin-bottom: -20px;
+    margin-left: -20px;
     z-index: 2;
+    width: 291px;
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -289,7 +310,7 @@ html::after {
     font-weight: 400;
     font-size: 12px;
     line-height: 133%;
-    color: #828282;
+    color: #333;
   }
   .audio__description-img {
     border-radius: 4px;
@@ -305,17 +326,20 @@ html::after {
     position: absolute;
     left: -20px;
     z-index: 6;
+    width: 331px;
   }
   .audio__control {
     background: url("../img/audio-bcgr.svg");
     background-position: -20px 100px;
     width: 331px;
+    margin-left: -20px;
     height: 90px;
     z-index: 5;
     position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    border-radius: 0 0 40px 40px;
   }
   .audio__control button:nth-child(2) {
     display: flex;
